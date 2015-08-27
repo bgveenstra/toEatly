@@ -6,7 +6,7 @@ $(function() {
 // Function definitions
 function getFoods() {
   $.get("/foods", function(res){ 
-    var foods = JSON.parse(res);
+    var foods = res;
     // grab foods template
     template = _.template($("#foods-template").html());
     // input foods into template and append to parent
