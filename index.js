@@ -37,7 +37,14 @@ app.get("/api/foods", function (req, res){
 app.post("/api/foods", function (req, res){
   var newFood = req.body;
   // add a unique id
-  newFood.id = foods[foods.length - 1].id + 1;
+  if (foods.length){
+    // id will be either one more than current last id...
+    newFood.id = foods[foods.length - 1].id + 1;
+  } else {
+    // ... or will be 0 if foods array is currently empty
+    newFood.id = 0;
+  }
+  
   // add new food to DB (array, really...)
   foods.push(newFood);
   // send a response with newly created object

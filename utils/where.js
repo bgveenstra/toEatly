@@ -1,3 +1,7 @@
+// search through an array of objects and return
+// the last one that matches all of the key-value pairs
+// given in the properties argument.
+
 function where(arr, properties){
   var output;
   var obj;
