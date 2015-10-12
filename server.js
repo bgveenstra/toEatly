@@ -1,3 +1,5 @@
+// SERVER SIDE JAVASCRIPT
+
 // REQUIREMENTS //
 var express = require("express"),
     app = express(),
