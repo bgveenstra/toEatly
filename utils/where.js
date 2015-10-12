@@ -16,4 +16,8 @@ function where(arr, properties){
   return output;
 }
 
+
+// The module.exports object will be available 
+// outside this file through node's require method.
+// Here we just set this file's  module.exports to be the where function.
 module.exports = where;
