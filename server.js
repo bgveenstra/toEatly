@@ -67,6 +67,22 @@ app.delete("/api/foods/:id", function (req, res){
   res.json(targetItem);
 });
 
+app.patch("/api/foods/:id", function (req, res){
+  // set the value of the id
+  var targetId = parseInt(req.params.id);
+  // find item in the array matching the id
+  var targetItem = where(foods, {id: targetId});
+  if (targetItem){
+    // use the data in the form body to change the item
+    targetItem.name = req.body.name || targetItem.name;
+    targetItem.yumminess = req.body.yumminess || targetItem.yumminess;
+    // send back updated item data
+    res.status(200).json(targetItem);
+  } else {
+    res.status(404).send('target item not found for id ' + req.params.id);
+  }
+})
+
 app.listen(3000, function (){
   console.log("listening on port 3000");
 });
