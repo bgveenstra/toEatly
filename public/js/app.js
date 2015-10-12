@@ -23,6 +23,7 @@ function pageLoad() {
   });
 }
 
+
 // function getFoods() {
 //   $.get("/api/foods", function(response){ 
 //     var foods = response.reverse();
@@ -30,6 +31,7 @@ function pageLoad() {
 //     renderFoods(foods);
 //   });
 // }
+
 
 // function renderFoods(foods) {
 //   // clear content (for repeated use)
@@ -59,6 +61,7 @@ function deleteFood(context) {
     success: function(response) {
       // once successful, delete this food from view
       $(context).closest('li').remove();
+
     }
   });
 }
