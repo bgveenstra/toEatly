@@ -26,13 +26,13 @@ var foods =[
 
 // ROUTES //
 app.get("/", function (req, res){
-  // render index.html
+  // send index.html
   res.sendFile(path.join(views + 'index.html'));
 });
 
 // foods api path
 app.get("/api/foods", function (req, res){
-  // render foods data as JSON
+  // send back foods data as JSON
   res.json(foods);
 });
 
@@ -62,7 +62,7 @@ app.delete("/api/foods/:id", function (req, res){
   var index = foods.indexOf(targetItem);
   // remove the item at that index, only remove 1 item
   foods.splice(index, 1);
-  // render deleted object
+  // send back deleted object
   res.json(targetItem);
 });
 

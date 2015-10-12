@@ -26,7 +26,7 @@ function pageLoad() {
 function getFoods() {
   $.get("/api/foods", function(response){ 
     var foods = response.reverse();
-    // grab foods template
+    // format all foods from data and add them to the page
     renderFoods(foods);
   });
 }
@@ -49,7 +49,8 @@ function deleteFood(context) {
     url: '/api/foods/' + foodId,
     type: 'DELETE',
     success: function(response) {
-      // once successful, re-render all foods
+      // once successful, re-request (and re-render)
+      // all foods
       getFoods();
     }
   });
