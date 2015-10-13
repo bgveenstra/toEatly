@@ -22,6 +22,12 @@ function pageLoad() {
     //   $("#new-food-form")[0].reset();
     // });
   });
+
+  $("form.update").on("submit" function(e){
+    console.log("update form submitted");
+    e.preventDefault();
+    updateFood(e.target);
+  });
 }
 
 
@@ -61,12 +67,13 @@ function foodHTMLString(food){
         "' onclick='deleteFood(this)' type='button' class='close' aria-label='Close'> " + 
         " <span aria-hidden='true'>&times;</span> " + 
       " </button> " +
-      " <button data-toggle='collapse' data-target='#update-" + food.id + 
-        "' aria-expanded='false' aria-controls='update-" + food.id + 
-        "' class='update' aria-label='Update'> " + 
-      "</button> " +
-      "<form id='update-" + food.id + "'>" +
-        ""
+      // " <button data-toggle='collapse' data-target='#update-" + food.id + 
+      //   "' aria-expanded='false' aria-controls='update-" + food.id + 
+      //   "' class='update' aria-label='Update'> " + 
+      // "</button> " +
+      "<form class='update' id='update-" + food.id + "'>" +
+        "<input type='text' name='name'>" +
+        "<input type='text' name='yumminess'>" +
       "</form>";
   console.log("str: ", str);
   return str;
@@ -97,8 +104,10 @@ function updateFood(context) {
     success: function(response) {
       // once successful, change the food in the view
       var updated = foodHTMLString(response);
+      updated = $('<li>'+updated+'</li>')
       console.log("updated", updated)
-      $(context).closest('li').html(updated);
+      //$(context).closest('li').html(updated);
+      $(context).closest('li').replaceWith(updated);
     }
   })
 }
